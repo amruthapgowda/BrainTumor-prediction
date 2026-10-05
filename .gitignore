@@ -1,0 +1,4 @@
+﻿uploads/
+BrainTumor.keras
+BrainTumor10Epochs.h5
+BrainTumor10EpochsCategorical.keras

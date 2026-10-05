@@ -1,0 +1,140 @@
+{% extends "import.html" %}
+{% block content %}
+
+<style>
+body{
+    background: linear-gradient(135deg, #e3f2fd, #ffffff);
+}
+
+.main-container{
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.title{
+    color: #0d6efd;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center !important;
+    display: block;
+    width: 100%;
+}
+
+.subtitle{
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.upload-box{
+    border: 2px dashed #0d6efd;
+    border-radius: 15px;
+    padding: 30px;
+    background: #f8fbff;
+}
+
+#imagePreview{
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #0d6efd;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+#btn-predict{
+    margin-top: 20px;
+    padding: 12px 35px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.result-box{
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8f9fa;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #0d6efd;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+<div class="main-container">
+
+    <h1 class="title">🧠 Brain Tumor Detection System</h1>
+
+    <p class="subtitle">
+        Upload an MRI brain scan for AI-assisted tumor detection.
+    </p>
+
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+
+        <div class="upload-box">
+
+            <h4>Select MRI Image</h4>
+            <br>
+
+            <input type="file"
+                   name="file"
+                   class="form-control"
+                   id="imageUpload"
+                   accept=".png, .jpg, .jpeg">
+
+        </div>
+
+    </form>
+
+    <div class="image-section" style="display:none;">
+
+        <img id="imagePreview"
+             src="#"
+             alt="MRI Preview">
+
+        <br>
+
+        <button type="button"
+                class="btn btn-primary btn-lg"
+                id="btn-predict">
+            Analyze Image
+        </button>
+
+    </div>
+
+    <div class="loader" style="display:none;"></div>
+
+    
+    <div class="result-box">
+        <h3 id="result">
+            <span>Prediction result will appear here.</span>
+            
+        </h3>
+        <div class="progress mt-3" style="height:30px;">
+            <div id="confidence-bar"
+                 class="progress-bar progress-bar-striped progress-bar-animated"
+                 role="progressbar"
+                 style="width:0%">
+                0% 
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
