@@ -23,9 +23,11 @@ INPUT_SIZE = 64
 # No Tumor Images
 for image_name in no_tumor_images:
 
-    if image_name.endswith('.jpg'):
+    if image_name.lower().endswith(('.jpg', '.jpeg', '.png')):
 
         image = cv2.imread(image_directory + 'no/' + image_name)
+        if image is None:
+            continue
         image = Image.fromarray(image, 'RGB')
         image = image.resize((INPUT_SIZE, INPUT_SIZE))
 
@@ -35,16 +37,20 @@ for image_name in no_tumor_images:
 # Tumor Images
 for image_name in yes_tumor_images:
 
-    if image_name.endswith('.jpg'):
+    if image_name.lower().endswith(('.jpg', '.jpeg', '.png')):
 
         image = cv2.imread(image_directory + 'yes/' + image_name)
+        if image is None:
+            continue
         image = Image.fromarray(image, 'RGB')
         image = image.resize((INPUT_SIZE, INPUT_SIZE))
 
         dataset.append(np.array(image))
         label.append(1)
 
+print("Total images loaded:", len(dataset))
 dataset = np.array(dataset)
+
 label = np.array(label)
 
 print("No Tumor Images:", len(no_tumor_images))

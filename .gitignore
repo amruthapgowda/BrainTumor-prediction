@@ -2,3 +2,7 @@
 BrainTumor.keras
 BrainTumor10Epochs.h5
 BrainTumor10EpochsCategorical.keras
+BrainTumor_v2.keras
+datasets/bigdataset/
+uploads/
+__pycache__/
