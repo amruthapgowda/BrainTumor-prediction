@@ -8,7 +8,7 @@ A deep learning project that classifies brain MRI scans as **tumor** or **no tum
 
 | | Value |
 |---|---|
-| Dataset | [DATASET NAME](ADD-KAGGLE-LINK-HERE), about 7,200 MRI images |
+| Dataset | [Brain Tumor MRI Dataset (Masoud Nickparvar, Kaggle)](https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset), about 7,200 MRI images |
 | Classes | No tumor vs tumor (glioma, meningioma and pituitary combined as tumor) |
 | Model | MobileNetV2 (pretrained on ImageNet) with a new classification head |
 | Input size | 128 x 128 |
